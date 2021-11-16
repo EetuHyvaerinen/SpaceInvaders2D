@@ -4,16 +4,16 @@ import character.GameCharacter;
 import game.A_Const;
 
 public class DamageCircle extends GameCharacter {
-	GameCharacter rookie;
+	GameCharacter gc;
 	int xoffset;
 	int yoffset;
 	double x;
 	double y;
-	public DamageCircle(double x, double y, GameCharacter rookie) {
+	public DamageCircle(double x, double y, GameCharacter gc) {
 		super(x, y, 0, 8, 0, 400);
-		this.rookie = rookie;
-		xoffset = (int) (x - rookie.getX());
-		yoffset = (int) (y - rookie.getY());
+		this.gc = gc;
+		xoffset = (int) (x - gc.getX());
+		yoffset = (int) (y - gc.getY());
 		this.x = x;
 		this.y = y;
 		
@@ -24,9 +24,9 @@ public class DamageCircle extends GameCharacter {
 	
 	@Override
 	public void move(double diffSeconds) {
-		x = (rookie.getX() + xoffset);
-		y = (rookie.getY() + yoffset);		
-		if (rookie.getRemove()) {
+		x = (gc.getX() + xoffset);
+		y = (gc.getY() + yoffset);		
+		if (gc.getRemove()) {
 			this.setRemove();
 		}
 	}

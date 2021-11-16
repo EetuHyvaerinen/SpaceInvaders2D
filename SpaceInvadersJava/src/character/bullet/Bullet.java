@@ -6,11 +6,10 @@ import game.A_Const;
 
 public class Bullet extends GameCharacter {
 	
-	private int damage;
+	int damage = 1;
 	
-	public Bullet(double x, double y, int damage) {
+	public Bullet(double x, double y) {
 		super(x, y, 0, 3, 0, 400);
-		this.damage = damage;
 	}
 	public void move(double diffSeconds) {
 		y -= speed * diffSeconds;

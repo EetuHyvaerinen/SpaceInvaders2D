@@ -45,7 +45,7 @@ public class GamePanel extends JPanel {
 		}
 
 	}
-	
+
 	private void drawShrapnel(GameCharacter gc) {
 		int x = (int) (gc.getX() - gc.getRadius());
 		int y = (int) (gc.getY() - gc.getRadius());

@@ -3,11 +3,10 @@ package game;
 import java.util.ArrayList;
 
 import character.GameCharacter;
-import character.bullet.DamageCircle;
-
 public class PhysicsSystem {
 
 	public static boolean isCollision(GameCharacter a, GameCharacter b) {
+
 		if (getDistance(b, a) <= a.getRadius() + b.getRadius()) {
 			return true;
 		}
@@ -41,6 +40,18 @@ public class PhysicsSystem {
 			}
 			break;
 
+		case A_Const.TYPE_BLOCK:
+			for (int i = 0; i < list.size(); i++) {
+				GameCharacter current = list.get(i);
+				//check if avatar is touching current object
+				if (current.type() == A_Const.TYPE_ENEMY_BULLET) {
+					if (isCollision(a, current)) {
+						collisions.add(current);
+					}
+				}
+			}
+			break;
+			
 		case A_Const.TYPE_BULLET:
 			for (int i = 0; i < list.size(); i++) {
 				GameCharacter current = list.get(i);

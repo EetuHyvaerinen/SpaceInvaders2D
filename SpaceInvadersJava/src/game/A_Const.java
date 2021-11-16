@@ -11,6 +11,8 @@ public final class A_Const {
 	public static final int TYPE_ENEMY_BULLET  = 4;
 	public static final int TYPE_DAMAGE        = 5;
 	public static final int TYPE_SHRAPNEL      = 6;
+	public static final int TYPE_BLOCK         = 7;
+
 
 	public static final int WAVE1_ROOKIE_NUM = 5;
 

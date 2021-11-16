@@ -23,7 +23,17 @@ public class CharacterHandler {
 	Random random = new Random();
 	public CharacterHandler(InputSystem inputSystem) {
 		handler = this;
-		avatar = new Avatar(400, 500, 3, inputSystem);
+		avatar = new Avatar(400, 550, 3, inputSystem);
+		addObject(new Block(300, 450, 3, 10, 0, 0));
+		addObject(new Block(320, 450, 3, 10, 0, 0));
+		addObject(new Block(340, 450, 3, 10, 0, 0));
+		addObject(new Block(360, 450, 3, 10, 0, 0));
+		addObject(new Block(380, 450, 3, 10, 0, 0));
+		addObject(new Block(400, 450, 3, 10, 0, 0));
+		addObject(new Block(420, 450, 3, 10, 0, 0));
+		addObject(new Block(440, 450, 3, 10, 0, 0));
+		addObject(new Block(460, 450, 3, 10, 0, 0));
+
 		addObject(avatar);
 		// initialize EnemyWaves and get the initial wave
 		EnemyWaves waves = new EnemyWaves();
@@ -35,6 +45,7 @@ public class CharacterHandler {
 	public void addObject(GameCharacter gc) {
 		objectList.add(gc);
 	}
+	
 
 	public void removeObject(GameCharacter gc) {
 		// if removed object is an enemy, decrement enemyCounter
@@ -74,6 +85,18 @@ public class CharacterHandler {
 
 			}
 			break;
+			
+		case A_Const.TYPE_BLOCK:
+			enemyListSmall = physics.getCollisions(gc, objectList);
+			for (int k = 0; k < enemyListSmall.size(); k++) {
+				enemyListSmall.get(k).setRemove();
+				gc.changeHealth(-1);
+				DamageCircle dmg = new DamageCircle(enemyListSmall.get(k).getX(), enemyListSmall.get(k).getY(), gc);
+				addObject(dmg);
+
+			}
+			break;
+			
 		case A_Const.TYPE_BULLET:
 			enemyListSmall = physics.getCollisions(gc, objectList);
 			for (int j = 0; j < enemyListSmall.size(); j++) {

@@ -28,7 +28,7 @@ public class Avatar extends GameCharacter {
 		if (inputSystem.isSpace() && !remove) {
 			startTime += diffSeconds;
 			if (startTime >= 1/fireRate) {
-				handler.addObject(new Bullet(x, y, damage));
+				handler.addObject(new Bullet(x, y));
 				startTime = 0;
 			}
 		}
